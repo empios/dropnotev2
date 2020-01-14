@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+import django_heroku
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -131,3 +132,4 @@ FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier', 'code_view'
                          'quote', 'save', 'table',
                          'url', 'video')
 FROALA_INCLUDE_JQUERY = False
+django_heroku.settings(locals())
