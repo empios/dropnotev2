@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <form method="POST" class="form-group">
+    <br>
+            <div style="height:68vh;width:50vw; text-align: center; display: block; margin: auto">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button type="submit" class="btn btn-success">Zaloguj sie</button>
+            </div>
+    </form>
+{% endblock %}

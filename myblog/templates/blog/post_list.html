@@ -1,0 +1,21 @@
+{% extends 'blog/base.html' %}
+    <div class="content container">
+            {% block content %}
+                {% for post in posts %}
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                        <h1 id="notetitle" class="text-center"><a href= "{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                            <div style="height:100vh;width:98vw">
+                            {% autoescape off %}
+                                <div style="margin-left: 5px">
+                                    {{ post.text | linebreaks}}
+                                    {% endautoescape %}
+                                </div>
+                            <br>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endblock %}
+    </div>

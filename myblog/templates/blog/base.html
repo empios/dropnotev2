@@ -1,0 +1,86 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="icon" type="image/png" href="{% static "img/favicon.ico" %}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "css/mdb.lite.css" %}">
+    <link href="{{STATIC_URL}}froala_editor/css/froala_editor.min.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="{{STATIC_URL}}froala_editor/css/froala_style.min.css" type="text/css" media="all" rel="stylesheet" />
+    <title>Podziel się notatkami</title>
+    {{form.media}}
+</head>
+<header>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark justify-content-between waves-effect">
+        <ul class="navbar-nav">
+            <li class="navbar-header">
+                <a class="navbar-brand" href="/">DropNote</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Notatki</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Pliki</a>
+            </li>
+        </ul>
+        <div class="mdl-layout-spacer float-right">
+
+            {% if user.is_authenticated %}
+                <a href="/logout" id="logout" class="btn btn-raised btn-default bg-white" style="margin-right: 5px">Wyloguj się</a>
+                <a href="/note/new" id="new" class="btn btn-raised btn-default bg-white" style="margin-right: 5px">Dodaj nową notatkę</a>
+            {% else %}
+                <a href="/signup" class="btn btn-raised btn-default bg-white">Zarejestruj się</a>
+                <a href="/login" class="btn btn-raised btn-default bg-white">Zaloguj się</a>
+            {% endif %}
+        </div>
+    </nav>
+
+</header>
+<body>
+        {% block content %}
+
+        {% endblock %}
+
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+        <script type="text/javascript" src="{% static "js/jquery.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/popper.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
+        <script type="text/javascript" src="{% static "js/mdb.min.js" %}"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}froala_editor/js/froala_editor.min.js"></script>
+</body>
+
+
+<footer class="page-footer font-small stylish-color-dark darken-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 py-5">
+        <div class="mb-5 flex-center">
+          <a class="fb-ic" href="https://www.facebook.com/pawelvlodarczyk">
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="tw-ic" href="https://twitter.com/empiospl">
+            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="li-ic" href="https://www.linkedin.com/in/pawe%C5%82-w%C5%82odarczyk-22ab99185/">
+            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="ins-ic" href="https://www.instagram.com/pawelvlodarczyk/">
+            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <a class="pin-ic" href="https://github.com/empios">
+            <i class="fab fa-github white-text mr-md-5 mr-3 fa-2x fa-lg"></i> </i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright text-center bg-dark py-3">© 2020 Copyright:
+    <a href="http://www.pawelvlodarczyk.pl"> Paweł Włodarczyk</a>
+  </div>
+</footer>
+</html>
