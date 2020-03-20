@@ -1,3 +1,4 @@
+
 from django.utils import timezone
 from .models import Post
 from django.shortcuts import get_object_or_404
@@ -31,6 +32,11 @@ def post_new(request):
     else:
         form = PostForm()
     return render(request, 'blog/post_edit.html', {'form': form})
+
+
+def post_delete(request, pk):
+    Post.objects.get(pk=pk).delete()
+    return redirect('/')
 
 
 def post_edit(request, pk):

@@ -3,7 +3,7 @@
 {% block content %}
     <form method="POST" class="form-group">
     <br>
-            <div style="height:68vh;width:50vw; text-align: center; display: block; margin: auto">
+            <div class="container" style="min-height: 100vh;">
                 {% csrf_token %}
                 {{ form|crispy }}
                 <button type="submit" class="btn btn-success">Zaloguj sie</button>

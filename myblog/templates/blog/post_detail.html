@@ -1,18 +1,20 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-    <div class="post">
+    <div class="container" style="min-height: 100vh;">
+        {% if user.is_authenticated %}
+            <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil">Edytuj</span></a>
+            <a class="btn btn-default" href="{% url 'post_delete' pk=post.pk %}"><span class="glyphicon glyphicon-remove">Usuń</span></a>
+        {% endif %}
         {% if post.published_date %}
             <div class="date">
                 {{ post.published_date }}
             </div>
         {% endif %}
-        {% if user.is_authenticated %}
-        <a class="btn btn-default" href="{% url 'post_edit' pk=post.pk %}"><span class="glyphicon glyphicon-pencil">Edytuj</span></a>
-        {% endif %}
+
         <h2>{{ post.title }}</h2>
         {% autoescape off %}
-            <div style="height:100vh;width:98vw">
+            <div class="col">
             {{ post.text|linebreaksbr }}
             {% endautoescape %}
             </div>
