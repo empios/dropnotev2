@@ -2,6 +2,7 @@ from django.db import models
 from django.utils import timezone
 from froala_editor.fields import FroalaField
 
+
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
@@ -17,3 +18,15 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Files(models.Model):
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    title = models.CharField(max_length=200)
+    url = models.CharField(max_length=300)
+
+    def saveUrl(self):
+        self.save()
+
+    def __str__(self):
+        return self.url

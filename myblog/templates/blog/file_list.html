@@ -1,0 +1,13 @@
+    {% extends 'blog/base.html' %}
+            {% block content %}
+                {% for file in files %}
+                    <br>
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h2 class="text-primary card-title">{{ file.title }}</h2>
+                            <a href= "{{ file.url }}" class="btn btn-primary" target="_blank">Pokaż plik</a>
+                        </div>
+                    </div>
+                    <br>
+                {% endfor %}
+            {% endblock %}

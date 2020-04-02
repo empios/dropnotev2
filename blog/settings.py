@@ -133,3 +133,7 @@ FROALA_EDITOR_PLUGINS = ('align', 'char_counter', 'code_beautifier', 'code_view'
                          'url', 'video')
 FROALA_INCLUDE_JQUERY = False
 django_heroku.settings(locals())
+FROALA_UPLOAD_PATH = 'Blog-master/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+

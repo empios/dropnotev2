@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="{% static "css/mdb.lite.css" %}">
     <link href="{{STATIC_URL}}froala_editor/css/froala_editor.min.css" type="text/css" media="all" rel="stylesheet" />
     <link href="{{STATIC_URL}}froala_editor/css/froala_style.min.css" type="text/css" media="all" rel="stylesheet" />
+    <link href="{{STATIC_URL}}froala_editor/css/plugins/emoticons.min.css" type="text/css" media="all" rel="stylesheet" />
     <title>Podziel się notatkami</title>
     {{form.media}}
 </head>
@@ -23,7 +24,10 @@
                 <a class="nav-link" href="/">Notatki</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Pliki</a>
+                <a class="nav-link" href="/upload">Dodaj plik</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/showfiles">Pokaż pliki</a>
             </li>
         </ul>
         <div class="mdl-layout-spacer float-right">
@@ -54,6 +58,7 @@
         <script type="text/javascript" src="{% static "js/bootstrap.min.js" %}"></script>
         <script type="text/javascript" src="{% static "js/mdb.min.js" %}"></script>
         <script type="text/javascript" src="{{STATIC_URL}}froala_editor/js/froala_editor.min.js"></script>
+        <script type="text/javascript" src="{{STATIC_URL}}froala_editor/js/plugins/emoticons.min.js"></script>
 </body>
 
 

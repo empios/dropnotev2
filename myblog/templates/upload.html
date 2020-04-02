@@ -1,0 +1,29 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+            <div class="row" style="padding-top: 70px">
+                <div class="col text-center">
+                    <h1>Dodaj swój plik</h1>
+                    <br>
+                    <form method="post" class="post-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile" name="document" lang="pl">
+                        <label class="custom-file-label" for="customFile">Wybierz interesujący plik</label>
+                            <br>
+                        </div>
+                        <br>
+                        <button type="submit" class="save btn btn-success">Wyślij plik</button>
+                        </form>
+                    <h3 style="color: red">UWAGA!</h3>
+                    <p style="color: lightcoral">Pliki które wrzucasz będą widoczne dla wszystkich w liście, jeśli chcesz dodać plik tylko załączony do notatki skorzystaj z takiej opcji w dodawaniu notatki.</p>
+                {% if url %}
+                    <p>Twój plik: <a href="{{ url }}">{{ url }}</a></p>
+                {% endif %}
+                {% else %}
+                    <h1 style="padding-top: 50px" class="text-center">Zaloguj się aby móc dodać plik na serwer</h1>
+                </div>
+            </div>
+    {% endif %}
+{% endblock %}

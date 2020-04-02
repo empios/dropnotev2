@@ -1,10 +1,10 @@
-
 from django.utils import timezone
-from .models import Post
+from .models import Post, Files
 from django.shortcuts import get_object_or_404
-from .forms import PostForm
+from .forms import PostForm, UrlForm
 from .forms import RegisterForm
 from django.shortcuts import render, redirect
+from django.core.files.storage import FileSystemStorage
 
 
 # Create your views here.
@@ -63,3 +63,24 @@ def signup(response):
     else:
         form = RegisterForm()
     return render(response, "blog/signup.html", {'form': form})
+
+
+def upload(request):
+    context = {}
+    if request.method == "POST":
+        uploaded_file = request.FILES['document']
+        fs = FileSystemStorage()
+        name = fs.save(uploaded_file.name, uploaded_file)
+        context['url'] = fs.url(name)
+        form = UrlForm(request.POST)
+        item = form.save(commit=False)
+        item.title = uploaded_file.name
+        item.author = request.user
+        item.url = fs.url(name)
+        item.save()
+    return render(request, 'upload.html', context)
+
+
+def files_list(request):
+    files = Files.objects.all()
+    return render(request, 'blog/file_list.html', {'files': files})
