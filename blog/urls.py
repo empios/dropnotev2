@@ -21,4 +21,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('myblog.urls')),
     path('froala_editor/', include('froala_editor.urls')),
+    url(r'^emoji/', include('emoji.urls')),
 ]

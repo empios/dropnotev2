@@ -1,5 +1,5 @@
 {% extends 'blog/base.html' %}
-
+{% load emoji_tags %}
 {% block content %}
     <div class="container" style="min-height: 100vh;">
         {% if user.is_authenticated %}
@@ -14,6 +14,7 @@
 
         <h2>{{ post.title }}</h2>
         {% autoescape off %}
+            {{ emoji|emoji_replace }}
             <div class="col">
             {{ post.text|linebreaksbr }}
             {% endautoescape %}
