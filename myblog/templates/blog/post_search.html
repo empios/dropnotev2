@@ -1,15 +1,23 @@
-    {% extends 'blog/base.html' %}
-            {% block content %}
-                {% for post in searched_posts %}
-                    <br>
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h1 class="text-primary card-title">{{ post.title }}</h1>
-                            <h6 class="card-subtitle">{{ post.created_date}}</h6>
-                            <a href= "{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Przejdź do notatki</a>
-                            <p>#{{ post.hashtag }}</p>
-                        </div>
-                    </div>
-                    <br>
-                {% endfor %}
-            {% endblock %}
+{% extends 'blog/base.html' %}
+{% block content %}
+    {% for post in searched_posts %}
+        <br>
+        <div class="card text-center">
+            <div class="card-body">
+                <h1 class="text-primary card-title">{{ post.title }}</h1>
+                <h6 class="card-subtitle">{{ post.created_date }}</h6>
+                <a href="{% url 'post_detail' pk=post.pk %}" class="btn btn-primary">Przejdź do notatki</a>
+                <p class="hash">#{{ post.hashtag }}</p>
+            </div>
+        </div>
+        <br>
+        <script>
+            let value = []
+            value = document.getElementsByClassName("hash")
+            for (let i = 0; i < value.length; i++) {
+                value[i].textContent = value[i].textContent.replace(/\s/g, ' #')
+            }
+        </script>
+    {% endfor %}
+{% endblock %}
+

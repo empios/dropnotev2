@@ -91,5 +91,5 @@ def search(request):
     if request.method == "POST":
         searched_posts = Post.objects.all()
         searched_hash = request.POST['search']
-        searched_posts = searched_posts.filter(hashtag=searched_hash)
+        searched_posts = searched_posts.filter(hashtag__contains=searched_hash)
     return render(request, 'blog/post_search.html', {'searched_posts': searched_posts})
