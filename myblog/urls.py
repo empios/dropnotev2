@@ -14,6 +14,7 @@ urlpatterns = [
     path('', include("django.contrib.auth.urls")),
     path('upload/', views.upload, name='upload'),
     path('showfiles/', views.files_list, name='file_list'),
+    path('search/', views.search, name='search')
 ]
 
 if settings.DEBUG:

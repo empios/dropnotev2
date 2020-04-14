@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'myblog',
     'froala_editor',
     'emoji',
+    'simple_email_confirmation',
 ]
 
 MIDDLEWARE = [
@@ -142,3 +143,8 @@ FROALA_UPLOAD_PATH = 'Blog-master/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'infaica2@gmail.com'
+EMAIL_HOST_PASSWORD = 'ifa175icA2'
+EMAIL_PORT = '587'

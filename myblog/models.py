@@ -6,6 +6,7 @@ from froala_editor.fields import FroalaField
 class Post(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
+    hashtag = models.SlugField(unique=False)
     text = FroalaField(theme='dark')
     created_date = models.DateTimeField(
         default=timezone.now)
