@@ -31,3 +31,9 @@ class Files(models.Model):
 
     def __str__(self):
         return self.url
+
+
+class Comment(models.Model):
+    Post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    Body = models.TextField()

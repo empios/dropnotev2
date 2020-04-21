@@ -1,5 +1,5 @@
 from django import forms
-from .models import Post, Files
+from .models import Post, Files, Comment
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from froala_editor.widgets import FroalaEditor
@@ -25,3 +25,9 @@ class UrlForm(forms.ModelForm):
     class Meta:
         model = Files
         fields = ()
+
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ["Body"]

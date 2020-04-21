@@ -1,7 +1,7 @@
 from django.utils import timezone
-from .models import Post, Files
+from .models import Post, Files, Comment
 from django.shortcuts import get_object_or_404
-from .forms import PostForm, UrlForm
+from .forms import PostForm, UrlForm, CommentForm
 from .forms import RegisterForm
 from django.shortcuts import render, redirect
 from django.core.files.storage import FileSystemStorage
@@ -10,14 +10,14 @@ from django.core.files.storage import FileSystemStorage
 # Create your views here.
 
 def post_list(request):
-    posts = Post.objects.all()
-    posts.filter(published_date=timezone.now()).order_by('published_date')
+    posts = Post.objects.all().order_by('published_date').reverse()
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    return render(request, 'blog/post_detail.html', {'post': post})
+    comments = Comment.objects.all().filter(Post=pk)
+    return render(request, 'blog/post_detail.html', {'post': post, 'comments': comments})
 
 
 def post_new(request):
@@ -93,3 +93,17 @@ def search(request):
         searched_hash = request.POST['search']
         searched_posts = searched_posts.filter(hashtag__contains=searched_hash)
     return render(request, 'blog/post_search.html', {'searched_posts': searched_posts})
+
+
+def save_comment(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        comment_form = CommentForm(request.POST)
+        comment = comment_form.save(commit=False)
+        comment.author = request.user
+        comment.Post = post
+        comment.save()
+        return redirect('post_detail', pk=post.pk)
+    else:
+        comment_form = CommentForm()
+    return render(request, 'blog/add_comment.html', {'comment_form': comment_form})
