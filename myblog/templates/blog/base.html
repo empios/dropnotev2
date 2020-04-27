@@ -78,27 +78,28 @@
             </li>
         </ul>
 
-
-        <form method="post" id="searching_form" action="/search/">
-            {% csrf_token %}
-            <div class="searchbar">
-                <input class="search_input" type="text" name="search" placeholder="Szukaj...">
-                <a href="javascript:$('#searching_form').submit();" class="search_icon"><i class="fas fa-search"></i></a>
-            </div>
-        </form>
-            <div class="mdl-layout-spacer float-right">
-
-
-                {% if user.is_authenticated %}
-                    <a href="/logout" id="logout" class="btn btn-raised btn-default bg-white" style="margin-right: 5px">Wyloguj
-                        się</a>
-                    <a href="/note/new" id="new" class="btn btn-raised btn-default bg-white" style="margin-right: 5px">Dodaj
-                        nową notatkę</a>
-                {% else %}
-                    <a href="/signup" class="btn btn-raised btn-default bg-white">Zarejestruj się</a>
-                    <a href="/login" class="btn btn-raised btn-default bg-white">Zaloguj się</a>
-                {% endif %}
-            </div>
+        <div style="align-items: center; margin-left: 40px; margin-top: 10px;">
+            <form method="post" id="searching_form" action="/search/">
+                {% csrf_token %}
+                <div class="searchbar">
+                    <input class="search_input" type="text" name="search" placeholder="Szukaj...">
+                    <a href="javascript:$('#searching_form').submit();" class="search_icon"><i
+                            class="fas fa-search"></i></a>
+                </div>
+            </form>
+        </div>
+        <div class="mdl-layout-spacer float-right">
+            <a href="/" class="save btn btn-default">Usuń filtrowanie</a>
+            {% if user.is_authenticated %}
+                <a href="/logout" id="logout" class="btn btn-raised btn-default bg-white" style="margin-right: 5px">Wyloguj
+                    się</a>
+                <a href="/note/new" id="new" class="btn btn-raised btn-default bg-white" style="margin-right: 5px">Dodaj
+                    nową notatkę</a>
+            {% else %}
+                <a href="/signup" class="btn btn-raised btn-default bg-white">Zarejestruj się</a>
+                <a href="/login" class="btn btn-raised btn-default bg-white">Zaloguj się</a>
+            {% endif %}
+        </div>
     </nav>
 
 </header>

@@ -25,11 +25,19 @@
         <br/>
 
         {% for comment in comments %}
-                <p>{{ comment.author }} | {{ comment.Body }}</p>
+
+            <div class="card">
+                <div class="card-header">
+                    {{ comment.author }}
+                </div>
+                <div class="card-body">
+                    {{ comment.Body }}
+                </div>
+            </div>
         {% endfor %}
         <br/>
         {% if user.is_authenticated %}
-            <a href="{% url 'addcomment' pk=post.pk %}" class="save btn btn-default">Add some comment</a>
+            <a href="{% url 'addcomment' pk=post.pk %}" class="save btn btn-default">Dodaj komentarz</a>
         {% endif %}
     </div>
 {% endblock %}
